@@ -18,17 +18,24 @@ public class HelloApplication extends Application {
         Label lblNome = new Label("Informe seu nome");
 
         TextField textNome = new TextField();
-        textNome.setPrefSize(100, 50);
-
-        Button btnOK = new Button();
-        btnOK.setText("OK");
+        textNome.setPrefSize(100, 30);
 
         Label lblMensagem = new Label();
 
+        Button btnOK = new Button();
+        btnOK.setText("OK");
+        btnOK.setOnAction(e -> lblMensagem.setText("Hello " + textNome.getText() + ", how are you?"));
+        btnOK.setOnMouseEntered(e -> System.out.println("Entered with the mouse"));
+
         VBox layout = new VBox();
+        layout.setSpacing(10);
         layout.getChildren().addAll(lblNome, textNome, btnOK, lblMensagem);
 
         Scene scene = new Scene(layout, 320, 240);
+
+        scene.setOnMouseEntered(e -> System.out.println("Entered on the scene"));
+        scene.setOnMouseExited(e -> System.out.println("Exited the scene"));
+        
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
